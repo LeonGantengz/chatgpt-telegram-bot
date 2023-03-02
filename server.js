@@ -7,7 +7,7 @@ import TelegramBot from 'node-telegram-bot-api';
   await api.ensureAuth();
   const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
   const { first_name: botName } = await bot.getMe();
-  bot.onText(/\/chatgpt (.+)/, async (msg, match) => {
+  bot.onText(/\/ask (.+)/, async (msg, match) => {
     const { id: chatId } = msg.chat;
     console.log(new Date(), `${msg.from.username}: ${match[1]}`);
     if (match[1] === 'new') {
